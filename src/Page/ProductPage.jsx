@@ -9,6 +9,8 @@ function ProductPage() {
     const [filteredData, setFilteredData] = useState([])
     const input = useRef(null)
 
+    
+
     useEffect(()=>{
         getData(setData)
     },[])
@@ -41,3 +43,4 @@ function ProductPage() {
 }
 
 export default ProductPage
+

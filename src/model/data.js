@@ -8,7 +8,8 @@ async function getData(setData) {
 export default getData
 
 
-// gr produc data
+// get product data
+
 
 // cor on the user
 
