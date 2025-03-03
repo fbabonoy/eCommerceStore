@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import getData from "../model/data"
 import InfoCard from "../component/InfoCard"
+import "./ProductPage.css"
 
 
 function ProductPage() {
@@ -21,8 +22,9 @@ function ProductPage() {
         
         setFilteredData(newData)
     }
-    return <div>
+    return <div >
         <input ref={input} type="text" onChange={()=> handleFilter(input)}/>
+        <div className="ItemPage">
         {
         filteredData.length === 0 ?
         data.map((item)=>{
@@ -34,6 +36,7 @@ function ProductPage() {
 
         })
         }
+        </div>
     </div>
 }
 

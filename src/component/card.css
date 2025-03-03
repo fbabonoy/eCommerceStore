@@ -1,0 +1,15 @@
+.ItemCard {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid gray;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}

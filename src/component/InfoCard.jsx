@@ -1,7 +1,7 @@
-
+import "./card.css"
 
 function InfoCard({item, handleClick}) {
-    return <div>
+    return <div className="ItemCard">
         <img src={item.image} alt={item.title} />
         <h3>{item.title}</h3>
         <h4>rating: {item.rating.rate}   count: {item.rating.count}</h4>
