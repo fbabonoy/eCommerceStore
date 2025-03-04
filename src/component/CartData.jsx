@@ -4,11 +4,13 @@ function handleCart(state, action) {
     switch (action.action) {
         case "add":
             //need to account for multiples of the same insted of adding to array increate the counter
-            const newCart = [...state]
-            newCart.push(action.payload)
-            return newCart
-        case "delete" :
-            return state.filter((item)=> {
+            if (state.indexOf(action.payload) < 0) {
+                const newCart = [...state]
+                newCart.push(action.payload)
+                return newCart
+            }
+        case "delete":
+            return state.filter((item) => {
                 return item.title !== action.payload.title
             })
         default:
