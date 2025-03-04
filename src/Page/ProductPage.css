@@ -1,4 +1,13 @@
 .ItemPage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+    /* justify-content: space-evenly; */
+}
+
+.bar {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding-inline: 40px;
+    padding-block: 10px;
 }

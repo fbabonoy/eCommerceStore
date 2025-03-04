@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
 import getData from "../model/data"
 import InfoCard from "../component/InfoCard"
 import "./ProductPage.css"
@@ -9,14 +9,18 @@ function ProductPage() {
     const [filteredData, setFilteredData] = useState([])
     const input = useRef(null)
 
-    
+    let arr = []
+
+    filteredData.length === 0 ?
+        arr = data :
+        arr = filteredData
+
 
     useEffect(()=>{
         getData(setData)
     },[])
 
     function handleFilter (ref) {
-        console.log(ref.current.value);
         let newData = data.filter((item)=> {
             const title = item.title.toLowerCase()
             return title.includes(ref.current.value)
@@ -24,17 +28,21 @@ function ProductPage() {
         
         setFilteredData(newData)
     }
-    return <div >
+
+    function handleOnClick(item) {
+        
+    }
+
+
+    return <div  >
+        <div className="bar">
         <input ref={input} type="text" onChange={()=> handleFilter(input)}/>
+        <button>🛒 Cart (1)</button>
+        </div>
         <div className="ItemPage">
         {
-        filteredData.length === 0 ?
-        data.map((item)=>{
-            return <InfoCard key={item.id} item={item}/>
-
-        }) :
-        filteredData.map((item)=>{
-            return <InfoCard key={item.id} item={item}/>
+        arr.map((item)=>{
+            return <InfoCard key={item.id} item={item} handleClick={()=>handleOnClick(item)}/>
 
         })
         }
