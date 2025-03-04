@@ -32,20 +32,20 @@ function ProductPage() {
         setFilteredData(newData)
     }
 
-    const { cartData, addToCart } = useContext(CartContent);
+    const { state, dispatch } = useContext(CartContent);
 
 
     return <div  >
         <div className="bar">
             <input ref={input} type="text" onChange={() => handleFilter(input)} />
                 <Link to="/cart" >
-                    <button>🛒 Cart {cartData.length > 0 ? `(${cartData.length})` : ""}</button>
+                    <button>🛒 Cart {state.length > 0 ? `(${state.length})` : ""}</button>
                 </Link>
         </div>
         <div className="ItemPage">
             {
                 arr.map((item) => {
-                    return <InfoCard key={item.id} item={item} handleClick={() => addToCart(item)} />
+                    return <InfoCard key={item.id} item={item} handleClick={() => dispatch({action: "add", payload: item})} />
 
                 })
             }

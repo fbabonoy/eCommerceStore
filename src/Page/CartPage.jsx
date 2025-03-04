@@ -4,20 +4,15 @@ import { Link } from "react-router-dom";
 import InfoCard from "../component/InfoCard";
 
 function CartPage() {
-
-    const { cartData, addToCart } = useContext(CartContent);
-
-    console.log(cartData);
-    
+    const { state, dispatch } = useContext(CartContent);    
 
     return <div>
         <Link to="/">
         <button>back</button>
         </Link>
         {
-            cartData.map((item) => {
-                return <InfoCard key={item.id} item={item} handleClick={() => addToCart(item)} />
-
+            state.map((item) => {
+                return <InfoCard key={item.id} item={item} handleClick={() => dispatch({action: "delete", payload: item})} displayDelete={true}/>
             })
         }
     </div>
