@@ -1,11 +1,9 @@
 import { createContext, useReducer, useState } from "react"
 
-
-export const CartContent = createContext()
-
 function handleCart(state, action) {
     switch (action.action) {
         case "add":
+            //need to account for multiples of the same insted of adding to array increate the counter
             const newCart = [...state]
             newCart.push(action.payload)
             return newCart
@@ -18,19 +16,11 @@ function handleCart(state, action) {
     }
 }
 
+export const CartContent = createContext()
+
 export function CartData({ children }) {
-
-    // const [cartData, setCartData] = useState([])
-
-    // const addToCart = (item) => {
-    //     const newCart = [...cartData]
-    //     newCart.push(item)
-    //     setCartData(newCart)
-    // }
-
-    // add use reduce to add or remove from the list
-
     const [state, dispatch] = useReducer(handleCart, [])
+
     return <CartContent.Provider value={{ state, dispatch }}>
         {children}
     </CartContent.Provider>
